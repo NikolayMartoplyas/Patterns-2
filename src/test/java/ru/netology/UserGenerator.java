@@ -24,6 +24,7 @@ public class UserGenerator {
     public static class Registration {
         private Registration() {
         }
+
         public static RegistrationDto generateUser(String local, String status) {
             RegistrationDto user = new RegistrationDto(generateLogin(local), generatePassword(local), status);
             given() // "дано"
@@ -36,10 +37,12 @@ public class UserGenerator {
 
             return user;
         }
-        public static RegistrationDto getUser(String local, String status){
-            RegistrationDto users = new RegistrationDto(generateLogin(local), generatePassword(local), status);
-            return users;
+
+        public static RegistrationDto getUser(String local, String status) {
+            RegistrationDto user = new RegistrationDto(generateLogin(local), generatePassword(local), status);
+            return user;
         }
+
         public static String generateLogin(String local) {
             Faker faker = new Faker(new Locale(local));
             return faker.name().fullName();
